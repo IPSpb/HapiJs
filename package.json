@@ -1,0 +1,24 @@
+{
+  "name": "hapi-js",
+  "version": "1.0.0",
+  "description": "hapi framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IPSpb/HapiJs.git"
+  },
+  "author": "iv.popov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IPSpb/HapiJs/issues"
+  },
+  "homepage": "https://github.com/IPSpb/HapiJs#readme",
+  "dependencies": {
+    "good": "^6.1.4",
+    "good-console": "^5.0.1",
+    "hapi": "^8.6.0"
+  }
+}
