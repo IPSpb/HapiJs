@@ -4,35 +4,23 @@ var Hapi = require('hapi'),
 
 server.connection({ port: 8000 });
 
-// добавляем роултер
-server.route({
-    method: 'GET',
-    path: '/',
-    handler: function (request, reply) {
-        reply('Hello, world!');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/{name}',
-    handler: function (request, reply) {
-        reply('Hello, ' + encodeURIComponent(request.params.name) + '|')
-    }
-});
-
-server.register({
-    register: Good,
-    options: {
-        reporters: [{
-            reporter: require('good-console'),
-            events: {
-                response: '*',
-                log: '*'
-            }
-        }]
-    }
-}, function (err) {
+server.register([
+    {
+        register: Good,
+        options: {
+            reporters: [{
+                reporter: require('good-console'),
+                events: {
+                    response: '*',
+                    log: '*'
+                }
+            }]
+        }
+    },
+    {register: require('hapi-auth-basic')},
+    {register: require('./server/auth-strategy.js')},
+    {register: require('./server/routes/index.js')}
+], function (err) {
     if (err) {
         throw err; // Что то плохое случилось при загрузке плагина
     }
